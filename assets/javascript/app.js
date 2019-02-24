@@ -33,61 +33,84 @@ var intervalId;
 
     if (number <= 0) {
         //  Alert the user that time is up.
+        $("game-timer").remove();
+        $("game-timer").text("<h2> Times Up!!!!!" + "</h2>");
         alert("Time Up!");
+
         clearInterval(intervalId);
       }
 
 };
 
-// display question number one with four possible answers
+// display questions with four possible answers, correct answer array value and an image to display
 
 var questions = 
 [
     {question: "Name the building from Die Hard where the movie takes place",
     answers: ["A: The Wal-Mart Plaza", "B: Naruto Matisyahu building", "C: Nakatomi Plaza", "D: Who cares where's Steve Urkel"],
-    correctAnswer: "C: Nakatomi Plaza",
+    correctAnswer: 2,
     image: "",
 },
     {question: "What is the Actors name who plays Clubber McClane in Rocky",
     answers: [" John McClain", "Samuel L. Jackson", "Lady Gaga", "Mr. T"],
-    correctAnswer: "Mr. T",
+    correctAnswer: 3,
     image: "",
 },
     {question: "This is question number 3",
     answers: ["Answer 1 ", "Answer 2", "Answer 3", "Answer 4"],
-    correctAnswer: "Answer 3",
+    correctAnswer: 2,
     image: "",
 },
     {question: "This is question number 4",
     answers: ["Answer 1 ", "Answer 2", "Answer 3", "Answer 4"],
-    correctAnswer: "Answer 3",
+    correctAnswer: 2,
     image: "",
     },
 
 ];
 
+var counter = 0;
+
 function loadQuestion(){
     
-        console.log(questions[0].question);
 
-        $("#game-question").text(questions[0].question);
+        $("#game-question").text(questions[counter].question);
         
 
-        for (var j = 0; j < questions[0].answers.length; j++){
-
-            console.log (questions[0].answers[j]);
+        for (var j = 0; j < questions[counter].answers.length; j++){
            
-            var newAnswerDiv = $("<h4>" + questions[0].answers[j] + "</h4>");
+            var newAnswerDiv = $("<h4>" + questions[counter].answers[j] + "</h4>");
             newAnswerDiv.addClass("answer-class");
+            newAnswerDiv.attr("data-value",j)
             $("#game-answers").append(newAnswerDiv);
+
         };
 
+        $(".answer-class").on("click",function () {
+
+            var optionClicked = $(this).attr("data-value");
+            optionClicked = parseInt(optionClicked);
+            console.log("you clicked " + optionClicked);
+
+            if (optionClicked == questions[counter].correctAnswer){
+
+                console.log(questions[counter].correctAnswer);
+
+                alert("correct answer");
+                counter ++;
+                $(".answer-class").remove();
+                loadQuestion();
+            }
+            else {
+                alert("wrong answer");
+                counter++ ;
+                $(".answer-class").remove();
+                loadQuestion();
+            }
+        });
 };
 // when user clicks the answer it needs to display correct or incorrect
-$(".answer-class").on("click",function () {
 
-    console.log("you clicked");
-});
 // the correct answer will display underneath 
 
 // after answer is selected the timer will give you 5 seconds before loading next question
