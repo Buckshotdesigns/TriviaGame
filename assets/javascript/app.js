@@ -2,6 +2,8 @@
 
 // have the game rules displayed 
 
+// start the game by clicking a button that says start
+
 
 $("#start-game").on("click", function() {
 
@@ -9,15 +11,47 @@ $("#start-game").on("click", function() {
 
 $("#start-game").remove();
 $("#game-instructions").remove();
+run();
 
 });
 
 
-// start the game by clicking a button that says start
+var number = 30;
+var intervalId;
 
 // have the timer running at the top of the screen set to 30 seconds 
+ function run() {
 
+    clearInterval(intervalId);
+    intervalId = setInterval(decrement, 1000);
+ };
+ function decrement() {
+    
+    number --;
+    $("#game-timer").html("<h2> Time Remaining:  " + number + "</h2>");
+
+    if (number === 0) {
+
+        //  ...run the stop function.
+        stop();
+
+        //  Alert the user that time is up.
+        alert("Time Up!");
+      }
+
+};
+
+function stop(){
+
+    clearInterval(intervalId);
+};
 // display question number one with four possible answers
+
+var questions = [{question: "name the building from Die Hard where the movie takes place",
+    answers: ["The Wal-Mart Plaza", "Naruto Matisyahu building", "Nakatomi Plaza", "Who cares where's Steve Urkel"],
+    correctAnswer: "Nakatomi Plaza",
+    image: "",
+}];
 
 // when user clicks the answer it needs to display correct or incorrect
 
