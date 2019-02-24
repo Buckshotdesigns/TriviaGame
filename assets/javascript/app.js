@@ -44,8 +44,8 @@ var intervalId;
 var questions = 
 [
     {question: "Name the building from Die Hard where the movie takes place",
-    answers: ["The Wal-Mart Plaza", "Naruto Matisyahu building", "Nakatomi Plaza", "Who cares where's Steve Urkel"],
-    correctAnswer: "Nakatomi Plaza",
+    answers: ["A: The Wal-Mart Plaza", "B: Naruto Matisyahu building", "C: Nakatomi Plaza", "D: Who cares where's Steve Urkel"],
+    correctAnswer: "C: Nakatomi Plaza",
     image: "",
 },
     {question: "What is the Actors name who plays Clubber McClane in Rocky",
@@ -68,25 +68,18 @@ var questions =
 
 function loadQuestion(){
     
-    
-    for (var i = 0; i < questions.length; i++) {
-
-       
         console.log(questions[0].question);
 
-        $("#game-question").text(questions[i].question);
+        $("#game-question").text(questions[0].question);
         
-        // for (var j = 0; j < questions[i].answers.length; j++){
+
+        for (var j = 0; j < questions[0].answers.length; j++){
+
+            console.log (questions[0].answers[j]);
            
-        //     var newAnswerDiv = $("<h4>" + questions[i].answers[j] + "</h4>");
-        //     $("#game-answers").append(newAnswerDiv);
-        // };
-        
-    };
-
-    
-
-
+            var newAnswerDiv = $("<h4>" + questions[0].answers[j] + "</h4>");
+            $("#game-answers").append(newAnswerDiv);
+        };
 
 };
 // when user clicks the answer it needs to display correct or incorrect
