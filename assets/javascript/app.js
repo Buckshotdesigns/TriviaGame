@@ -1,9 +1,6 @@
 
 
-// have the game rules displayed 
-
-// start the game by clicking a button that says start
-
+// have the game rules displayed with a sart game button
 
 $("#start-game").on("click", function() {
 
@@ -12,6 +9,7 @@ $("#start-game").on("click", function() {
 $("#start-game").remove();
 $("#game-instructions").remove();
 timer();
+loadQuestion();
 
 });
 
@@ -42,12 +40,30 @@ var intervalId;
 
 // display question number one with four possible answers
 
-var questions = [{question: "name the building from Die Hard where the movie takes place",
+var questions = [{question: "Name the building from Die Hard where the movie takes place",
     answers: ["The Wal-Mart Plaza", "Naruto Matisyahu building", "Nakatomi Plaza", "Who cares where's Steve Urkel"],
     correctAnswer: "Nakatomi Plaza",
     image: "",
 }];
 
+function loadQuestion(){
+
+    for (var i = 0; i < questions.length; i++) {
+
+        $("#game-question").text(questions[i].question);
+        console.log(questions[i].question);
+        gameAnswers = $("<p>");
+
+        $("#game-answers").append(questions[i].answers);
+        console.log(questions[i].answers);
+
+    };
+
+    
+
+
+
+};
 // when user clicks the answer it needs to display correct or incorrect
 
 // the correct answer will display underneath 
