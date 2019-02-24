@@ -17,6 +17,7 @@ loadQuestion();
 var number = 30;
 var intervalId;
 
+
 // have the timer running at the top of the screen set to 30 seconds 
  function timer() {
 
@@ -40,23 +41,47 @@ var intervalId;
 
 // display question number one with four possible answers
 
-var questions = [{question: "Name the building from Die Hard where the movie takes place",
+var questions = 
+[
+    {question: "Name the building from Die Hard where the movie takes place",
     answers: ["The Wal-Mart Plaza", "Naruto Matisyahu building", "Nakatomi Plaza", "Who cares where's Steve Urkel"],
     correctAnswer: "Nakatomi Plaza",
     image: "",
-}];
+},
+    {question: "What is the Actors name who plays Clubber McClane in Rocky",
+    answers: [" John McClain", "Samuel L. Jackson", "Lady Gaga", "Mr. T"],
+    correctAnswer: "Mr. T",
+    image: "",
+},
+    {question: "This is question number 3",
+    answers: ["Answer 1 ", "Answer 2", "Answer 3", "Answer 4"],
+    correctAnswer: "Answer 3",
+    image: "",
+},
+    {question: "This is question number 4",
+    answers: ["Answer 1 ", "Answer 2", "Answer 3", "Answer 4"],
+    correctAnswer: "Answer 3",
+    image: "",
+    },
+
+];
 
 function loadQuestion(){
-
+    
+    
     for (var i = 0; i < questions.length; i++) {
 
+       
+        console.log(questions[0].question);
+
         $("#game-question").text(questions[i].question);
-        console.log(questions[i].question);
-        gameAnswers = $("<p>");
-
-        $("#game-answers").append(questions[i].answers);
-        console.log(questions[i].answers);
-
+        
+        // for (var j = 0; j < questions[i].answers.length; j++){
+           
+        //     var newAnswerDiv = $("<h4>" + questions[i].answers[j] + "</h4>");
+        //     $("#game-answers").append(newAnswerDiv);
+        // };
+        
     };
 
     
