@@ -29,13 +29,13 @@ var intervalId;
  function decrement() {
     
     number --;
-    $("#game-timer").html("<h2> Time Remaining:  " + number + "</h2>");
+    $("#game-timer").html("<h2 class= time-remaining> Time Remaining:  " + number + "</h2>");
 
     if (number <= 0) {
         //  Alert the user that time is up.
-        $("game-timer").remove();
-        $("game-timer").text("<h2> Times Up!!!!!" + "</h2>");
-        alert("Time Up!");
+        $(".time-remaining").remove();
+        $("#game-timer").text("Times Up!!!!!");
+        
 
         clearInterval(intervalId);
       }
