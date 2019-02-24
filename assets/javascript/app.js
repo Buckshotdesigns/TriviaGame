@@ -31,7 +31,7 @@ var intervalId;
     number --;
     $("#game-timer").html("<h2> Time Remaining:  " + number + "</h2>");
 
-    if (number === 0) {
+    if (number <= 0) {
         //  Alert the user that time is up.
         alert("Time Up!");
         clearInterval(intervalId);
@@ -78,12 +78,16 @@ function loadQuestion(){
             console.log (questions[0].answers[j]);
            
             var newAnswerDiv = $("<h4>" + questions[0].answers[j] + "</h4>");
+            newAnswerDiv.addClass("answer-class");
             $("#game-answers").append(newAnswerDiv);
         };
 
 };
 // when user clicks the answer it needs to display correct or incorrect
+$(".answer-class").on("click",function () {
 
+    console.log("you clicked");
+});
 // the correct answer will display underneath 
 
 // after answer is selected the timer will give you 5 seconds before loading next question
