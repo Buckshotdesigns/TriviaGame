@@ -2,13 +2,16 @@
 
 // have the game rules displayed 
 
-function startGame (){
 
-    
+$("#start-game").on("click", function() {
 
+    // once user has clicked the start game button the button and the instructions disappear
 
+$("#start-game").remove();
+$("#game-instructions").remove();
 
-}
+});
+
 
 // start the game by clicking a button that says start
 
