@@ -40,8 +40,11 @@ var running = false;
         //  Alert the user that time is up.
         $(".time-remaining").remove();
         $("#game-timer").text("Times Up!!!!!");
-       
+        var correctAnswer = questions[counter].correctAnswer
+        $("#correct-incorrect").text("Correct Answer!!! " + questions[counter].answers[correctAnswer] );
+
         stop();
+        gameSet();
         
        
       }
@@ -118,34 +121,31 @@ function loadQuestion(){
                 correctAnswer = questions[counter].correctAnswer
 
                 $("#correct-incorrect").text("Correct Answer!!! " + questions[counter].answers[correctAnswer] );
-                $("#place-image").html('<img src="./' + questions[counter].image +'" style="width:300px;height:300px;">');
-                counter ++;
-                stop();
-                
-                setTimeout(loadQuestion, 1000 * 5);
-                console.log(setTimeout);
-                number = 30;
-                $(".answer-class").remove();
-                
 
+                gameSet();
                 
             }
             else {
 
-                correctAnswer = questions[counter].correctAnswer
+                var correctAnswer = questions[counter].correctAnswer
                 $("#correct-incorrect").text("Wrong Answer!!! The correct answer is  " + questions[counter].answers[correctAnswer] );
-                $("#place-image").html('<img src="./' + questions[counter].image +'" alt="nakatomi plaza" style="width:250px;height:250px;">');
-                counter++ ;
-                stop();
-                
-                setTimeout(loadQuestion, 1000 * 5);
-                console.log(setTimeout);
-                number = 30;
-                $(".answer-class").remove();
-                
+
+                gameSet();
                 
             }
         });
+
+};
+
+function gameSet (){
+
+            
+    $("#place-image").html('<img src="./' + questions[counter].image +'" style="width:300px;height:300px;">');
+    counter ++;
+    stop();
+    setTimeout(loadQuestion, 1000 * 5);
+    number = 30;
+    $(".answer-class").remove();
 };
 // when user clicks the answer it needs to display correct or incorrect
 
