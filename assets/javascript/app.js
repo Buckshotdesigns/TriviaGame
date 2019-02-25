@@ -4,7 +4,7 @@
 
 $("#start-game").on("click", function() {
 
-    // once user has clicked the start game button the button and the instructions disappear
+// once user has clicked the start game button the button and the instructions disappear
 
 $("#start-game").remove();
 $("#game-instructions").remove();
@@ -40,27 +40,24 @@ var unanswered = 0;
     number --;
    
     if (number <= 0) {
-        //  Alert the user that time is up.
+
+        //  Alert the user that time is up with the correct answer and tallys an unanswered question
+
         $(".time-remaining").remove();
         $("#game-timer").text("Times Up!!!!!");
         var correctAnswer = questions[counter].correctAnswer
         $("#correct-incorrect").text("Correct Answer!!! " + questions[counter].answers[correctAnswer] );
-
+        unanswered ++;
         stop();
         gameSet();
-        
-       
       }
 
 };
 
 function stop() {
-
+// Stops the timer from running 
     running = false;
     clearInterval(intervalId);
-    number = 0;
-    
-
 };
 
 // display questions with four possible answers, correct answer array value and an image to display
@@ -76,7 +73,7 @@ var questions =
     answers: [" A: John McClain", "B: Samuel L. Jackson", "C: Lady Gaga", "D: Mr. T"],
     correctAnswer: 3,
     image: "assets/images/mrt.jpg",
-},
+ },
     {question: "What was the name of the kids character in Terminator 2 ? ",
     answers: ["A: Sunny Bono", "B: John Carpenter", "C: John Conner", "D: Sarah Conner"],
     correctAnswer: 2,
@@ -112,15 +109,16 @@ var questions =
     correctAnswer: 0,
     image: "assets/images/blade.png",
 },
-    {question: "Sylvestor Stallone and Wesley Snipes Star in the Expenables and what other Action Movie ?",
+    {question: "Sylvestor Stallone and Wesley Snipes Star in the Expendables and what other Action Movie ?",
     answers: ["A: Rambo ", "B: Rocky III", "C: Demolition Man", "D: Passenger 57"],
     correctAnswer: 2,
     image: "assets/images/demolition-man.jpg",
-    },
+    }
 ];
 
+// This variable is to go through the questions 
 var counter = 0;
-
+// This function loads each question on to the page and empties when done 
 function loadQuestion(){
 
         $("#place-image").empty();
@@ -153,7 +151,7 @@ function loadQuestion(){
                 correctAnswer = questions[counter].correctAnswer
 
                 $("#correct-incorrect").text("Correct Answer!!! " + questions[counter].answers[correctAnswer] );
-
+                correct ++;
                 gameSet();
                 
             }
@@ -161,7 +159,7 @@ function loadQuestion(){
 
                 var correctAnswer = questions[counter].correctAnswer
                 $("#correct-incorrect").text("Wrong Answer!!! The correct answer is  " + questions[counter].answers[correctAnswer] );
-
+                incorrect ++;
                 gameSet();
                 
             }
@@ -171,13 +169,37 @@ function loadQuestion(){
 
 function gameSet (){
 
-            
-    $("#place-image").html('<img src="./' + questions[counter].image +'" style="width:300px;height:300px;">');
-    counter ++;
-    stop();
-    setTimeout(loadQuestion, 1000 * 5);
-    number = 30;
     $(".answer-class").remove();
+    $("#place-image").html('<img src="./' + questions[counter].image +'" style="width:350px;height:300px;">');
+    stop();
+    counter ++;
+
+    if (counter >= questions.length) {
+
+       setTimeout(endGame, 1000 * 3);
+    
+    } else {
+    
+        setTimeout(loadQuestion, 1000 * 5);
+        number = 30;
+    
+    }
+    
+    
+};
+
+
+function endGame (){
+    stop();
+    $(".time-remaining").remove();
+    $("#place-image").empty();
+    $("#correct-incorrect").empty();
+    $("#game-question").empty();
+
+    $("#game-timer").text("Game Over! How did you do?");
+    $("#correct-answer").text("You got " + correct + " correct, Good Job!");
+    $("#incorrect-answer").text("You got " + incorrect + " wrong, Its ok those were hard questions!");
+    $("#no-answer").text("You didn't answer " + unanswered + " questions, That timer will get you!");
 };
 // when user clicks the answer it needs to display correct or incorrect
 
