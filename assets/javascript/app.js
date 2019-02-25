@@ -100,7 +100,7 @@ var questions =
     image: "assets/images/hackers.jpg",
 },
     {question: "In the Matrix Trilogy Keanu Reeves character Neo is also referred to as ?",
-    answers: ["A: The one who kicks everyone's ass ", "B: Party Monster", "C: He who should not be named", "D: The Chosen One"],
+    answers: ["A: The one who kicks everyone's ass ", "B: Party Monster", "C: He who should not be named", "D: The One"],
     correctAnswer: 3,
     image: "assets/images/matrix.png",
 },
@@ -143,10 +143,8 @@ function loadQuestion(){
 
             var optionClicked = $(this).attr("data-value");
             optionClicked = parseInt(optionClicked);
-            console.log("you clicked " + optionClicked);
 
             if (optionClicked == questions[counter].correctAnswer){
-
                
                 correctAnswer = questions[counter].correctAnswer
 
@@ -170,7 +168,7 @@ function loadQuestion(){
 function gameSet (){
 
     $(".answer-class").remove();
-    $("#place-image").html('<img src="./' + questions[counter].image +'" style="width:350px;height:300px;">');
+    $("#place-image").html('<img src="./' + questions[counter].image +'" style="width:325px;height:275px;">');
     stop();
     counter ++;
 
@@ -182,10 +180,7 @@ function gameSet (){
     
         setTimeout(loadQuestion, 1000 * 5);
         number = 30;
-    
     }
-    
-    
 };
 
 
@@ -198,9 +193,20 @@ function endGame (){
 
     $("#game-timer").text("Game Over! How did you do?");
     $("#correct-answer").text("You got " + correct + " correct, Good Job!");
-    $("#incorrect-answer").text("You got " + incorrect + " wrong, Its ok those were hard questions!");
-    $("#no-answer").text("You didn't answer " + unanswered + " questions, That timer will get you!");
+    $("#incorrect-answer").text("You got " + incorrect + " wrong, those were tough!");
+    $("#no-answer").text("You didn't answer " + unanswered + " questions.");
+    $("#place-image").append("<button type='button' class='btn btn-primary'id='restart-game'>Restart Game</button>");
 };
+
+$("#place-image").on("click", function() {
+    
+    counter = 0;
+    $(".end-of-game").empty();
+    $("#restart-game").remove();
+    setTimeout(loadQuestion, 1000 * 1);
+
+
+});
 // when user clicks the answer it needs to display correct or incorrect
 
 // the correct answer will display underneath 
