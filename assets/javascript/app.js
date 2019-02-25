@@ -71,10 +71,10 @@ var questions =
     correctAnswer: 3,
     image: "assets/images/mrt.jpg",
 },
-    {question: "This is question number 3",
-    answers: ["Answer 1 ", "Answer 2", "Answer 3", "Answer 4"],
+    {question: "What was the name of the kids character in Terminator 2 ? ",
+    answers: ["Sunny Bono", "John Carpenter", "John Conner", "Sarah Conner"],
     correctAnswer: 2,
-    image: "",
+    image: "assets/images/terminator-2.jpg",
 },
     {question: "This is question number 4",
     answers: ["Answer 1 ", "Answer 2", "Answer 3", "Answer 4"],
@@ -118,7 +118,7 @@ function loadQuestion(){
                 correctAnswer = questions[counter].correctAnswer
 
                 $("#correct-incorrect").text("Correct Answer!!! " + questions[counter].answers[correctAnswer] );
-                $("#place-image").html('<img src="./' + questions[counter].image +'" style="width:250px;height:250px;">');
+                $("#place-image").html('<img src="./' + questions[counter].image +'" style="width:300px;height:300px;">');
                 counter ++;
                 stop();
                 
