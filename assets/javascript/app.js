@@ -17,6 +17,9 @@ loadQuestion();
 var number = 30;
 var intervalId;
 var running = false;
+var correct = 0;
+var incorrect = 0;
+var unanswered = 0;
 
 
 // have the timer running at the top of the screen set to 30 seconds with previous variable
@@ -64,27 +67,56 @@ function stop() {
 
 var questions = 
 [
-    {question: "Name the building from Die Hard where the movie takes place",
+    {question: "Name the building from Die Hard where the movie takes place ?",
     answers: ["A: The Wal-Mart Plaza", "B: Naruto Matisyahu building", "C: Nakatomi Plaza", "D: Who cares where's Steve Urkel"],
     correctAnswer: 2,
     image: "assets/images/nakatomi.png",
 },
-    {question: "What is the Actors name who plays Clubber Lang in Rocky",
-    answers: [" John McClain", "Samuel L. Jackson", "Lady Gaga", "Mr. T"],
+    {question: "What is the Actors name who plays Clubber Lang in Rocky III ?",
+    answers: [" A: John McClain", "B: Samuel L. Jackson", "C: Lady Gaga", "D: Mr. T"],
     correctAnswer: 3,
     image: "assets/images/mrt.jpg",
 },
     {question: "What was the name of the kids character in Terminator 2 ? ",
-    answers: ["Sunny Bono", "John Carpenter", "John Conner", "Sarah Conner"],
+    answers: ["A: Sunny Bono", "B: John Carpenter", "C: John Conner", "D: Sarah Conner"],
     correctAnswer: 2,
     image: "assets/images/terminator-2.jpg",
 },
-    {question: "This is question number 4",
-    answers: ["Answer 1 ", "Answer 2", "Answer 3", "Answer 4"],
+    {question: "In the Fifth Element what was the Dj's chararcter name played by Chris Tucker ?",
+    answers: ["A: Ruby Rhod", "B: DJ Roc", "C: The Chemical Brothers", "D: Korben Dallas"],
+    correctAnswer: 0,
+    image: "assets/images/5th-element.jpg",
+},
+    {question: "Govenor Schwarzenegger and Govenor Jesse Ventura both starred in which two films ?",
+    answers: ["A: Terminator 1 and 2", "B: Predator and the Running Man", "C: Predator 1 and 2", "D: None of the Above"],
+    correctAnswer: 1,
+    image: "assets/images/running-man.jpg",
+},
+    {question: "In all of the Rambo movies what is Rambo's first name ?",
+    answers: ["A: Gerald ", "B: John", "C: Machine Gun", "D: Susan"],
+    correctAnswer: 1,
+    image: "assets/images/Rambo.jpg",
+},
+    {question: "In the movie Hackers what was the main characters real hacker handle ?",
+    answers: ["A: Crash and Burn ", "B: Acid Burn", "C: Cookie Monster", "D: Zero Cool"],
+    correctAnswer: 3,
+    image: "assets/images/hackers.jpg",
+},
+    {question: "In the Matrix Trilogy Keanu Reeves character Neo is also referred to as ?",
+    answers: ["A: The one who kicks everyone's ass ", "B: Party Monster", "C: He who should not be named", "D: The Chosen One"],
+    correctAnswer: 3,
+    image: "assets/images/matrix.png",
+},
+    {question: "In the Blade Trilogy Wesley Snipes plays Blade but the vampires in the movie refer to him as what ?",
+    answers: ["A: Daywalker ", "B: A Nuisance", "C: Whistler", "D: The Blood God"],
+    correctAnswer: 0,
+    image: "assets/images/blade.png",
+},
+    {question: "Sylvestor Stallone and Wesley Snipes Star in the Expenables and what other Action Movie ?",
+    answers: ["A: Rambo ", "B: Rocky III", "C: Demolition Man", "D: Passenger 57"],
     correctAnswer: 2,
-    image: "",
+    image: "assets/images/demolition-man.jpg",
     },
-
 ];
 
 var counter = 0;
