@@ -64,12 +64,12 @@ var questions =
     {question: "Name the building from Die Hard where the movie takes place",
     answers: ["A: The Wal-Mart Plaza", "B: Naruto Matisyahu building", "C: Nakatomi Plaza", "D: Who cares where's Steve Urkel"],
     correctAnswer: 2,
-    image: "",
+    image: "assets/images/nakatomi.png",
 },
-    {question: "What is the Actors name who plays Clubber McClane in Rocky",
+    {question: "What is the Actors name who plays Clubber Lang in Rocky",
     answers: [" John McClain", "Samuel L. Jackson", "Lady Gaga", "Mr. T"],
     correctAnswer: 3,
-    image: "",
+    image: "assets/images/mrt.jpg",
 },
     {question: "This is question number 3",
     answers: ["Answer 1 ", "Answer 2", "Answer 3", "Answer 4"],
@@ -87,8 +87,10 @@ var questions =
 var counter = 0;
 
 function loadQuestion(){
-    
+
+        $("#place-image").empty();
         $("#correct-incorrect").empty();
+        
         
         timer();
 
@@ -116,6 +118,7 @@ function loadQuestion(){
                 correctAnswer = questions[counter].correctAnswer
 
                 $("#correct-incorrect").text("Correct Answer!!! " + questions[counter].answers[correctAnswer] );
+                $("#place-image").html('<img src="./' + questions[counter].image +'" style="width:250px;height:250px;">');
                 counter ++;
                 stop();
                 
@@ -124,11 +127,14 @@ function loadQuestion(){
                 number = 30;
                 $(".answer-class").remove();
                 
+
+                
             }
             else {
 
                 correctAnswer = questions[counter].correctAnswer
                 $("#correct-incorrect").text("Wrong Answer!!! The correct answer is  " + questions[counter].answers[correctAnswer] );
+                $("#place-image").html('<img src="./' + questions[counter].image +'" alt="nakatomi plaza" style="width:250px;height:250px;">');
                 counter++ ;
                 stop();
                 
@@ -136,6 +142,7 @@ function loadQuestion(){
                 console.log(setTimeout);
                 number = 30;
                 $(".answer-class").remove();
+                
                 
             }
         });

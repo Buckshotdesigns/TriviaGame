@@ -7,7 +7,9 @@
     background-repeat: no-repeat;
     padding-top: 5rem;
 }
-
+#game-instructions {
+    padding: 2rem 8rem 0rem 8rem;
+}
 #game-question {
     padding: 2rem 0;
 }
