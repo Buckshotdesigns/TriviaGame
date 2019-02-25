@@ -14,7 +14,7 @@ loadQuestion();
 });
 
 
-var number = 30;
+var number = 20;
 var intervalId;
 var running = false;
 var correct = 0;
@@ -24,6 +24,7 @@ var unanswered = 0;
 
 // have the timer running at the top of the screen set to 30 seconds with previous variable
  function timer() {
+    
     
     if(!running) {
 
@@ -36,7 +37,7 @@ var unanswered = 0;
 //  starts the countdown of the timer
  function decrement() {
 
-    $("#game-timer").html("<h2 class= time-remaining> Time Remaining:  " + number + "</h2>");
+    $("#game-timer").text("Time Remaining:   " + number );
     number --;
    
     if (number <= 0) {
@@ -84,7 +85,7 @@ var questions =
     correctAnswer: 0,
     image: "assets/images/5th-element.jpg",
 },
-    {question: "Govenor Schwarzenegger and Govenor Jesse Ventura both starred in which two films ?",
+    {question: "Governor Schwarzenegger and Governor Jesse Ventura both starred in which two films ?",
     answers: ["A: Terminator 1 and 2", "B: Predator and the Running Man", "C: Predator 1 and 2", "D: None of the Above"],
     correctAnswer: 1,
     image: "assets/images/running-man.jpg",
@@ -178,8 +179,8 @@ function gameSet (){
     
     } else {
     
-        setTimeout(loadQuestion, 1000 * 5);
-        number = 30;
+        setTimeout(loadQuestion, 1000 * 4);
+        number = 20;
     }
 };
 
@@ -201,9 +202,12 @@ function endGame (){
 $("#place-image").on("click", function() {
     
     counter = 0;
+    correct = 0;
+    incorrect = 0;
+    unanswered = 0;
     $(".end-of-game").empty();
     $("#restart-game").remove();
-    setTimeout(loadQuestion, 1000 * 1);
+    loadQuestion();
 
 
 });
