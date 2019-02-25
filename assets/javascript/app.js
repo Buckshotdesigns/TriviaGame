@@ -16,29 +16,44 @@ loadQuestion();
 
 var number = 30;
 var intervalId;
+var running = false;
 
 
-// have the timer running at the top of the screen set to 30 seconds 
+// have the timer running at the top of the screen set to 30 seconds with previous variable
  function timer() {
+    
+    if(!running) {
 
-    clearInterval(intervalId);
-    intervalId = setInterval(decrement, 1000);
+        intervalId = setInterval(decrement, 1000);
+        running = true;
+    }
+   
  };
 
 //  starts the countdown of the timer
  function decrement() {
-    
-    number --;
-    $("#game-timer").html("<h2 class= time-remaining> Time Remaining:  " + number + "</h2>");
 
+    $("#game-timer").html("<h2 class= time-remaining> Time Remaining:  " + number + "</h2>");
+    number --;
+   
     if (number <= 0) {
         //  Alert the user that time is up.
         $(".time-remaining").remove();
         $("#game-timer").text("Times Up!!!!!");
+       
+        stop();
         
-
-        clearInterval(intervalId);
+       
       }
+
+};
+
+function stop() {
+
+    running = false;
+    clearInterval(intervalId);
+    number = 0;
+    
 
 };
 
@@ -73,6 +88,9 @@ var counter = 0;
 
 function loadQuestion(){
     
+        $("#correct-incorrect").empty();
+        
+        timer();
 
         $("#game-question").text(questions[counter].question);
         
@@ -94,18 +112,31 @@ function loadQuestion(){
 
             if (optionClicked == questions[counter].correctAnswer){
 
-                console.log(questions[counter].correctAnswer);
+               
+                correctAnswer = questions[counter].correctAnswer
 
-                alert("correct answer");
+                $("#correct-incorrect").text("Correct Answer!!! " + questions[counter].answers[correctAnswer] );
                 counter ++;
+                stop();
+                
+                setTimeout(loadQuestion, 1000 * 5);
+                console.log(setTimeout);
+                number = 30;
                 $(".answer-class").remove();
-                loadQuestion();
+                
             }
             else {
-                alert("wrong answer");
+
+                correctAnswer = questions[counter].correctAnswer
+                $("#correct-incorrect").text("Wrong Answer!!! The correct answer is  " + questions[counter].answers[correctAnswer] );
                 counter++ ;
+                stop();
+                
+                setTimeout(loadQuestion, 1000 * 5);
+                console.log(setTimeout);
+                number = 30;
                 $(".answer-class").remove();
-                loadQuestion();
+                
             }
         });
 };
