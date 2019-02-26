@@ -205,6 +205,7 @@ $("#place-image").on("click", function() {
     correct = 0;
     incorrect = 0;
     unanswered = 0;
+    number = 0;
     $(".end-of-game").empty();
     $("#restart-game").remove();
     loadQuestion();
