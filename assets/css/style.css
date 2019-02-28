@@ -43,7 +43,10 @@
         width: 100%;
         padding: 1rem 0;
         
-    
+    }
+
+    #game-instructions {
+        padding: 1rem;
     }
   }
 
