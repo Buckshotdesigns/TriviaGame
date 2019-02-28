@@ -25,7 +25,7 @@ var unanswered = 0;
 // have the timer running at the top of the screen set to 30 seconds with previous variable
  function timer() {
     
-    
+    $("#game-timer").text("Time Remaining:   ");
     if(!running) {
 
         intervalId = setInterval(decrement, 1000);
@@ -68,52 +68,62 @@ var questions =
     {question: "Name the building from Die Hard where the movie takes place ?",
     answers: ["A: The Wal-Mart Plaza", "B: Naruto Matisyahu building", "C: Nakatomi Plaza", "D: Who cares where's Steve Urkel"],
     correctAnswer: 2,
-    image: "assets/images/nakatomi.png",
+    image: "EWoFA9qDgYL04",
+    // image: "assets/images/nakatomi.png",
 },
     {question: "What is the Actors name who plays Clubber Lang in Rocky III ?",
     answers: [" A: John McClain", "B: Samuel L. Jackson", "C: Lady Gaga", "D: Mr. T"],
     correctAnswer: 3,
-    image: "assets/images/mrt.jpg",
+    image: "14ocCma2bidOCI",
+    // image: "assets/images/mrt.jpg",
  },
     {question: "What was the name of the kids character in Terminator 2 ? ",
     answers: ["A: Sunny Bono", "B: John Carpenter", "C: John Conner", "D: Sarah Conner"],
     correctAnswer: 2,
-    image: "assets/images/terminator-2.jpg",
+    image: "zKNmLSyXrqL9m",
+    // image: "assets/images/terminator-2.jpg",
 },
     {question: "In the Fifth Element what was the Dj's chararcter name played by Chris Tucker ?",
     answers: ["A: Ruby Rhod", "B: DJ Roc", "C: The Chemical Brothers", "D: Korben Dallas"],
     correctAnswer: 0,
-    image: "assets/images/5th-element.jpg",
+    image: "xmOIAJu82q5LW",
+    // image: "assets/images/5th-element.jpg",
 },
     {question: "Governor Schwarzenegger and Governor Jesse Ventura both starred in which two films ?",
     answers: ["A: Terminator 1 and 2", "B: Predator and the Running Man", "C: Predator 1 and 2", "D: None of the Above"],
     correctAnswer: 1,
-    image: "assets/images/running-man.jpg",
+    image: "Uno27COfoYlH2",
+    // image: "assets/images/running-man.jpg",
 },
     {question: "In all of the Rambo movies what is Rambo's first name ?",
     answers: ["A: Gerald ", "B: John", "C: Machine Gun", "D: Susan"],
     correctAnswer: 1,
-    image: "assets/images/Rambo.jpg",
+    image: "TBOvwBGkQShnq",
+    // image: "assets/images/Rambo.jpg",
 },
     {question: "In the movie Hackers what was the main characters real hacker handle ?",
     answers: ["A: Crash and Burn ", "B: Acid Burn", "C: Cookie Monster", "D: Zero Cool"],
     correctAnswer: 3,
-    image: "assets/images/hackers.jpg",
+    image: "13AN8X7jBIm15m",
+    // image: "assets/images/hackers.jpg",
 },
     {question: "In the Matrix Trilogy Keanu Reeves character Neo is also referred to as ?",
     answers: ["A: The one who kicks everyone's ass ", "B: Party Monster", "C: He who should not be named", "D: The One"],
     correctAnswer: 3,
-    image: "assets/images/matrix.png",
+    image: "BMuWMPmykHL6E",
+    // image: "assets/images/matrix.png",
 },
     {question: "In the Blade Trilogy Wesley Snipes plays Blade but the vampires in the movie refer to him as what ?",
     answers: ["A: Daywalker ", "B: A Nuisance", "C: Whistler", "D: The Blood God"],
     correctAnswer: 0,
-    image: "assets/images/blade.png",
+    image: "RFjc4YkvfkSnC",
+    // image: "assets/images/blade.png",
 },
     {question: "Sylvestor Stallone and Wesley Snipes Star in the Expendables and what other Action Movie ?",
     answers: ["A: Rambo ", "B: Rocky III", "C: Demolition Man", "D: Passenger 57"],
     correctAnswer: 2,
-    image: "assets/images/demolition-man.jpg",
+    image: "l3BCEsVRbLUCk",
+    // image: "assets/images/demolition-man.jpg",
     }
 ];
 
@@ -169,13 +179,32 @@ function loadQuestion(){
 function gameSet (){
 
     $(".answer-class").remove();
-    $("#place-image").html('<img src="./' + questions[counter].image +'" style="width:325px;height:275px;">');
-    stop();
+    // $("#place-image").html('<img src="./' + questions[counter].image +'" style="width:325px;height:275px;">');
+
+    var imageCode = questions[counter].image;
+    var queryURL = "https://api.giphy.com/v1/gifs/"+ imageCode +"?api_key=OKuVGjgT0V7r20tpzmToIqOjeggIVUYM";
+
+    
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+      
+      var myImage = response.data.images.downsized.url;
+      
+      $("#place-image").append('<img src=' + myImage + ' style="width:300px;height:225px;">');
+      stop();
+    });
+
+
+
+
+    // stop();
     counter ++;
 
     if (counter >= questions.length) {
 
-       setTimeout(endGame, 1000 * 3);
+       setTimeout(endGame, 1000 * 4);
     
     } else {
     
@@ -205,13 +234,27 @@ $("#place-image").on("click", function() {
     correct = 0;
     incorrect = 0;
     unanswered = 0;
-    number = 0;
+    number = 20;
     $(".end-of-game").empty();
     $("#restart-game").remove();
     loadQuestion();
 
 
 });
+
+    // var imageCode = questions[counter].image;
+    // var queryURL = "https://api.giphy.com/v1/gifs/"+ imageCode +"?api_key=OKuVGjgT0V7r20tpzmToIqOjeggIVUYM";
+
+    
+    // $.ajax({
+    //   url: queryURL,
+    //   method: "GET"
+    // }).then(function(response) {
+      
+    //   var myImage = response.data.images.downsized.url;
+      
+    //   $("#place-image").append('<img src=' + myImage + ' style="width:300px;height:225px;">');
+    // });
 // when user clicks the answer it needs to display correct or incorrect
 
 // the correct answer will display underneath 
