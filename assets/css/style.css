@@ -1,6 +1,6 @@
 
 #image-container {
-    height: 50rem;
+    height: 100vh;
     background-image: url("../images/movie-background.png");
     background-position: center;
     background-size: cover;
