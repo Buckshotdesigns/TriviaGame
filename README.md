@@ -18,5 +18,5 @@ Check out the deployed application here: https://trivia-movie-game.herokuapp.com
 - Bootstrap
 - Css3
 - Javascript
--JQuery
+- JQuery
 - Ajax using the Giphy API
